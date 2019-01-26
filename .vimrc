@@ -2,11 +2,8 @@ filetype plugin indent on
 
 let mapleader=","
 
-colorscheme elflord " good starting color scheme
 
 syntax enable " enable syntax highlighting
-
-set background=dark
 
 set number " show line numbers
 
@@ -24,9 +21,10 @@ set incsearch " search as characters are entered
 
 set nohlsearch " don't highlight search results
 
-set smartcase " only uses case sensitive searching if one or more uppercase characters are used
-
 set visualbell " sets the bell to be 'visual' instead of making a sound (visual bell does nothing in windows bash)
+
+set laststatus=2 "sets the status line to be drawn always
+set noshowmode "disables the default insert dialogue in favor of the status line status
 
 augroup run "run currently edited program with <leader> + r
 	autocmd!
@@ -40,20 +38,54 @@ augroup run "run currently edited program with <leader> + r
 augroup END
 
 " maps Y to yank to end of line, instead of yank entire line
-noremap Y y$
+nnoremap Y y$
 
 " use <leader> + w to write file
-noremap <leader>w :w<CR>
+nnoremap <leader>w :w<CR>
+
+" use ; to fuzzy search files (fzf)
+nnoremap ; :Files<CR>
 
 if empty(glob('~/.vim/autoload/plug.vim')) " install vim-plug if it doesn't already exist
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
+  autocmd VimEnter * colorscheme elflord | PlugInstall --sync | q | source ~/.vimrc "install plugins, setting color scheme to a bearable one first
 endif
+
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+" Automatically install missing plugins on startup
+if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
+  autocmd VimEnter * PlugInstall | q
+endif
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'} "fzf = fuzzy searching
+Plug 'junegunn/fzf.vim' 
+
+Plug 'itchyny/lightline.vim' "status bar
+
+Plug 'tpope/vim-eunuch' "enables unix commands in vim
+
+Plug 'tpope/vim-surround' "enables vim shortcuts for surrounding text
+
+Plug 'mattn/emmet-vim' "shortcuts for developing in HTML
+
+Plug 'scrooloose/nerdtree' "visualizer for directory tree
+
+Plug 'nanotech/jellybeans.vim' "color scheme :)
 
 call plug#end()
+
+if &term =~ '256color'
+  " disable Background Color Erase (BCE) so that color schemes
+  " render properly when inside 256-color tmux and GNU screen.
+  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+  set t_ut=
+endif
+
+"initializes theme, making sure to do so after installing plugins on a fresh install
+autocmd VimEnter * 
+  \ set background=dark |
+  \ colorscheme jellybeans |
+  \ let g:lightline = {'colorscheme': 'jellybeans'}
