@@ -1,3 +1,3 @@
 #!/bin/bash
 
-ln -s .vimrc ~/.vimrc #sets up vimrc
+ln -s $(pwd)/.vimrc ~/.vimrc #sets up vimrc
