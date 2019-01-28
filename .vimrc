@@ -28,7 +28,7 @@ set noshowmode "disables the default insert dialogue in favor of the status line
 
 augroup run "run currently edited program with <leader> + r
 	autocmd!
-	autocmd FileType python nnoremap <buffer> <leader>r :w<CR>:!clear;python3 %<CR>
+	autocmd FileType python nnoremap <buffer> <leader>r :w<CR>:!clear;python %<CR>
 	autocmd FileType c nnoremap <buffer> <leader>r :w<CR>:!clear;gcc % -std=c99 -Wall -Wconversion -lm -o %:r_vimcompiled;./%:r_vimcompiled;rm %:r_vimcompiled<CR>
 	autocmd FileType cpp nnoremap <buffer> <leader>r :w<CR>:!clear;g++ % -std=c++11 -Wall -lm -o %:r_vimcompiled;./%:r_vimcompiled;rm %:r_vimcompiled<CR>
 	autocmd FileType lisp nnoremap <buffer> <leader>r :w<CR>:!clear;clisp -i %<CR>
@@ -49,7 +49,7 @@ nnoremap ; :Files<CR>
 if empty(glob('~/.vim/autoload/plug.vim')) " install vim-plug if it doesn't already exist
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * colorscheme elflord | PlugInstall --sync | q | source ~/.vimrc "install plugins, setting color scheme to a bearable one first
+  autocmd VimEnter * PlugInstall --sync | q | source ~/.vimrc "install plugins, setting color scheme to a bearable one first
 endif
 
 
@@ -84,8 +84,7 @@ if &term =~ '256color'
   set t_ut=
 endif
 
-"initializes theme, making sure to do so after installing plugins on a fresh install
-autocmd VimEnter * 
-  \ set background=dark |
-  \ colorscheme jellybeans |
-  \ let g:lightline = {'colorscheme': 'jellybeans'}
+
+set background=dark "set background to dark
+silent! colorscheme jellybeans "set colorscheme to jellybeans, ignoring errors
+let g:lightline = {'colorscheme': 'jellybeans'} "update lightline to use this color scheme
