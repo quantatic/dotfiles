@@ -28,7 +28,7 @@ set noshowmode "disables the default insert dialogue in favor of the status line
 
 augroup run "run currently edited program with <leader> + r
 	autocmd!
-	autocmd FileType python nnoremap <buffer> <leader>r :w<CR>:!clear;python %<CR>
+	autocmd FileType python nnoremap <buffer> <leader>r :w<CR>:!clear;python3 %<CR>
 	autocmd FileType c nnoremap <buffer> <leader>r :w<CR>:!clear;gcc % -std=c99 -Wall -Wconversion -lm -o %:r_vimcompiled;./%:r_vimcompiled;rm %:r_vimcompiled<CR>
 	autocmd FileType cpp nnoremap <buffer> <leader>r :w<CR>:!clear;g++ % -std=c++11 -Wall -lm -o %:r_vimcompiled;./%:r_vimcompiled;rm %:r_vimcompiled<CR>
 	autocmd FileType lisp nnoremap <buffer> <leader>r :w<CR>:!clear;clisp -i %<CR>
