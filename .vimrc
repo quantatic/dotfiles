@@ -75,6 +75,8 @@ Plug 'scrooloose/nerdtree' "visualizer for directory tree
 
 Plug 'nanotech/jellybeans.vim' "color scheme :)
 
+Plug 'editorconfig/editorconfig-vim' "by-filetype configs
+
 call plug#end()
 
 if &term =~ '256color'
