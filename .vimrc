@@ -40,6 +40,9 @@ augroup END
 " maps Y to yank to end of line, instead of yank entire line
 nnoremap Y y$
 
+" when pasting text over other text, don't replace default buffer with pasted over text
+xnoremap p pgvy
+
 " use <leader> + w to write file
 nnoremap <leader>w :w<CR>
 
