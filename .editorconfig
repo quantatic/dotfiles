@@ -5,3 +5,7 @@ indent_size = 4
 [*.asm]
 indent_style = space
 indent_size = 10
+
+[*.c]
+indent_style = space
+indent_size = 4

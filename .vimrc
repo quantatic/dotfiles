@@ -5,7 +5,7 @@ let mapleader=","
 
 syntax enable " enable syntax highlighting
 
-set number " show line numbers
+set number relativenumber " show line numbers, relatively
 
 set showcmd " shows current command in bottom right
 
@@ -26,15 +26,24 @@ set visualbell " sets the bell to be 'visual' instead of making a sound (visual 
 set laststatus=2 "sets the status line to be drawn always
 set noshowmode "disables the default insert dialogue in favor of the status line status
 
+set timeoutlen=1000 "sets timeouts for custom keymappings to be 1s/1000ms
+set ttimeoutlen=0   "completely disables timeouts for key mappings (avoid the annoying delay for a second after leaving insert mode)
+
 augroup run "run currently edited program with <leader> + r
 	autocmd!
 	autocmd FileType python nnoremap <buffer> <leader>r :w<CR>:!clear;python3 %<CR>
-	autocmd FileType c nnoremap <buffer> <leader>r :w<CR>:!clear;gcc % -std=c99 -Wall -Wconversion -lm -o %:r_vimcompiled;./%:r_vimcompiled;rm %:r_vimcompiled<CR>
+	autocmd FileType c nnoremap <buffer> <leader>r :w<CR>:!clear;gcc % -std=c99 -Wall -lpthread -Wconversion -lm -o %:r_vimcompiled;./%:r_vimcompiled;rm %:r_vimcompiled<CR>
 	autocmd FileType cpp nnoremap <buffer> <leader>r :w<CR>:!clear;g++ % -std=c++11 -Wall -lm -o %:r_vimcompiled;./%:r_vimcompiled;rm %:r_vimcompiled<CR>
 	autocmd FileType lisp nnoremap <buffer> <leader>r :w<CR>:!clear;clisp -i %<CR>
 	autocmd FileType javascript nnoremap <buffer> <leader>r :w<CR>:!clear;nodejs %<CR>
 	autocmd FileType asm nnoremap <buffer> <leader>r :w<CR>:!clear;nasm % -o %:r.bin<CR>
 	autocmd FileType java nnoremap <buffer> <leader>r :w<CR>:!clear;javac %; java %:r<CR>
+augroup END
+
+augroup numbertoggle  "Toggles relative line numbering. Relative line numbering should be on in normal mode when window has focus. Off otherwise.
+	autocmd!
+	autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+	autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
 " maps Y to yank to end of line, instead of yank entire line
