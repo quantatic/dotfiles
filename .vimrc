@@ -90,6 +90,8 @@ Plug 'editorconfig/editorconfig-vim' "by-filetype configs
 
 Plug 'ervandew/supertab' "enables tab completion (how useful is this really?)
 
+Plug 'easymotion/vim-easymotion'
+
 call plug#end()
 
 if &term =~ '256color'
