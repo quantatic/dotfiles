@@ -2,7 +2,6 @@ filetype plugin indent on
 
 let mapleader=","
 
-
 syntax enable " enable syntax highlighting
 
 set number relativenumber " show line numbers, relatively
@@ -88,6 +87,8 @@ Plug 'scrooloose/nerdtree' "visualizer for directory tree
 Plug 'nanotech/jellybeans.vim' "color scheme :)
 
 Plug 'editorconfig/editorconfig-vim' "by-filetype configs
+
+Plug 'ervandew/supertab' "enables tab completion (how useful is this really?)
 
 call plug#end()
 
