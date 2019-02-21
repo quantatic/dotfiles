@@ -88,9 +88,9 @@ Plug 'nanotech/jellybeans.vim' "color scheme :)
 
 Plug 'editorconfig/editorconfig-vim' "by-filetype configs
 
-Plug 'ervandew/supertab' "enables tab completion (how useful is this really?)
+Plug 'easymotion/vim-easymotion' "EXPERIMENTAL: improves motion
 
-Plug 'easymotion/vim-easymotion'
+Plug 'ajh17/vimcompletesme' "autocompletion, lightweight...
 
 call plug#end()
 
