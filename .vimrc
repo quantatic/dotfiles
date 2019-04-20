@@ -1,8 +1,11 @@
 filetype plugin indent on
 
+
 let mapleader=","
 
 syntax enable " enable syntax highlighting
+
+set backspace=indent,eol,start "make sure backspace works properly
 
 set number relativenumber " show line numbers, relatively
 
@@ -31,12 +34,15 @@ set ttimeoutlen=0   "completely disables timeouts for key mappings (avoid the an
 augroup run "run currently edited program with <leader> + r
 	autocmd!
 	autocmd FileType python nnoremap <buffer> <leader>r :w<CR>:!clear;python3 %<CR>
-	autocmd FileType c nnoremap <buffer> <leader>r :w<CR>:!clear;gcc % -std=c99 -Wall -lpthread -Wconversion -lm -o %:r_vimcompiled;./%:r_vimcompiled;rm %:r_vimcompiled<CR>
+	autocmd FileType c nnoremap <buffer> <leader>r :w<CR>:!clear;gcc % -std=c99 -Wall -lpthread -Wconversion -lm -O2 -o %:r_vimcompiled;./%:r_vimcompiled disk_frag_0;rm %:r_vimcompiled<CR>
 	autocmd FileType cpp nnoremap <buffer> <leader>r :w<CR>:!clear;g++ % -std=c++11 -Wall -lm -o %:r_vimcompiled;./%:r_vimcompiled;rm %:r_vimcompiled<CR>
 	autocmd FileType lisp nnoremap <buffer> <leader>r :w<CR>:!clear;clisp -i %<CR>
 	autocmd FileType javascript nnoremap <buffer> <leader>r :w<CR>:!clear;nodejs %<CR>
-	autocmd FileType asm nnoremap <buffer> <leader>r :w<CR>:!clear;nasm % -o %:r.bin<CR>
+	autocmd FileType asm nnoremap <buffer> <leader>r :w<CR>:!clear;nasm % -f elf64 -o %:r_vimcompiled.bin; ld %:r_vimcompiled.bin -o %:r_vimcompiled; ./%:r_vimcompiled; rm %:r_vimcompiled.bin %:r_vimcompiled<CR>
 	autocmd FileType java nnoremap <buffer> <leader>r :w<CR>:!clear;javac %; java %:r<CR>
+	autocmd FileType sh nnoremap <buffer> <leader>r :w<CR>:!clear;bash %<CR>
+	autocmd FileType rust nnoremap <buffer> <leader>r :w<CR>:!clear;cargo run<CR>
+
 augroup END
 
 augroup numbertoggle  "Toggles relative line numbering. Relative line numbering should be on in normal mode when window has focus. Off otherwise.
@@ -89,8 +95,6 @@ Plug 'nanotech/jellybeans.vim' "color scheme :)
 Plug 'editorconfig/editorconfig-vim' "by-filetype configs
 
 Plug 'easymotion/vim-easymotion' "EXPERIMENTAL: improves motion
-
-Plug 'ajh17/vimcompletesme' "autocompletion, lightweight...
 
 call plug#end()
 
