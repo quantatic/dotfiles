@@ -34,7 +34,7 @@ set ttimeoutlen=0   "completely disables timeouts for key mappings (avoid the an
 augroup run "run currently edited program with <leader> + r
 	autocmd!
 	autocmd FileType python nnoremap <buffer> <leader>r :w<CR>:!clear;python3 %<CR>
-	autocmd FileType c nnoremap <buffer> <leader>r :w<CR>:!clear;gcc % -std=c99 -Wall -lpthread -Wconversion -lm -O2 -o %:r_vimcompiled;./%:r_vimcompiled disk_frag_0;rm %:r_vimcompiled<CR>
+	autocmd FileType c nnoremap <buffer> <leader>r :w<CR>:!clear;gcc % -std=c99 -Wall -lpthread -lm -O2 -o %:r_vimcompiled;./%:r_vimcompiled;rm %:r_vimcompiled<CR>
 	autocmd FileType cpp nnoremap <buffer> <leader>r :w<CR>:!clear;g++ % -std=c++11 -Wall -lm -o %:r_vimcompiled;./%:r_vimcompiled;rm %:r_vimcompiled<CR>
 	autocmd FileType lisp nnoremap <buffer> <leader>r :w<CR>:!clear;clisp -i %<CR>
 	autocmd FileType javascript nnoremap <buffer> <leader>r :w<CR>:!clear;nodejs %<CR>
