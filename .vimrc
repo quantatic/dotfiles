@@ -77,24 +77,22 @@ if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
   autocmd VimEnter * PlugInstall | q
 endif
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'} "fzf = fuzzy searching
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin'} "fzf = fuzzy searching
 Plug 'junegunn/fzf.vim' 
 
 Plug 'itchyny/lightline.vim' "status bar
-
-Plug 'tpope/vim-eunuch' "enables unix commands in vim
 
 Plug 'tpope/vim-surround' "enables vim shortcuts for surrounding text
 
 Plug 'mattn/emmet-vim' "shortcuts for developing in HTML
 
-Plug 'scrooloose/nerdtree' "visualizer for directory tree
-
 Plug 'nanotech/jellybeans.vim' "color scheme :)
 
 Plug 'editorconfig/editorconfig-vim' "by-filetype configs
 
-Plug 'easymotion/vim-easymotion' "EXPERIMENTAL: improves motion
+Plug 'easymotion/vim-easymotion'
+
+Plug 'flazz/vim-colorschemes' "collection of more colorschemes
 
 call plug#end()
 
