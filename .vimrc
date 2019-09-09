@@ -60,9 +60,6 @@ xnoremap p pgvy
 " use <leader> + w to write file
 nnoremap <leader>w :w<CR>
 
-" use ; to fuzzy search files (fzf)
-nnoremap ; :Files<CR>
-
 if empty(glob('~/.vim/autoload/plug.vim')) " install vim-plug if it doesn't already exist
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -76,9 +73,6 @@ call plug#begin('~/.vim/plugged')
 if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
   autocmd VimEnter * PlugInstall | q
 endif
-
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin'} "fzf = fuzzy searching
-Plug 'junegunn/fzf.vim' 
 
 Plug 'itchyny/lightline.vim' "status bar
 
