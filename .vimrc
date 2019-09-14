@@ -86,9 +86,16 @@ Plug 'editorconfig/editorconfig-vim' "by-filetype configs
 
 Plug 'easymotion/vim-easymotion'
 
-Plug 'flazz/vim-colorschemes' "collection of more colorschemes
+Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 install.py --clang-completer' }
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 call plug#end()
+
+"ycm goto
+nnoremap <leader>gt :YcmCompleter GoTo<CR> 
+
+"ycm get documentation about object
+nnoremap <leader>gd :YcmCompleter GetDoc<CR>
 
 if &term =~ '256color'
   " disable Background Color Erase (BCE) so that color schemes
@@ -96,7 +103,6 @@ if &term =~ '256color'
   " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
   set t_ut=
 endif
-
 
 set background=dark "set background to dark
 silent! colorscheme jellybeans "set colorscheme to jellybeans, ignoring errors
