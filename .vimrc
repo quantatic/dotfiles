@@ -57,8 +57,11 @@ nnoremap Y y$
 " when pasting text over other text, don't replace default buffer with pasted over text
 xnoremap p pgvy
 
-" use <leader> + w to write file
+" use <leader> + w to write file (,w)
 nnoremap <leader>w :w<CR>
+
+" user <leader> + W to write file as root (,W)
+nnoremap <leader>W :w !sudo tee % > /dev/null<CR>
 
 if empty(glob('~/.vim/autoload/plug.vim')) " install vim-plug if it doesn't already exist
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
