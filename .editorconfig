@@ -10,6 +10,10 @@ indent_size = 10
 indent_style = space
 indent_size = 4
 
+[*.{cc,cpp}]
+indent_style = space
+indent_size = 2
+
 [*.java]
 indent_style = space
 indent_size = 4

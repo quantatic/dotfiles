@@ -97,9 +97,6 @@ call plug#end()
 "ycm goto
 nnoremap <leader>gt :YcmCompleter GoTo<CR> 
 
-"ycm get documentation about object
-nnoremap <leader>gd :YcmCompleter GetDoc<CR>
-
 if &term =~ '256color'
   " disable Background Color Erase (BCE) so that color schemes
   " render properly when inside 256-color tmux and GNU screen.
