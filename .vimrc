@@ -59,6 +59,7 @@ xnoremap p pgvy
 
 " use <leader> + w to write file (,w)
 nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
 
 " user <leader> + W to write file as root (,W)
 nnoremap <leader>W :w !sudo tee % > /dev/null<CR>
@@ -91,11 +92,17 @@ Plug 'easymotion/vim-easymotion'
 
 Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 install.py --clang-completer' }
 let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_confirm_extra_conf = 0
 
 call plug#end()
 
 "ycm goto
 nnoremap <leader>gt :YcmCompleter GoTo<CR> 
+
+"ycm get doc
+nnoremap <leader>gd :YcmCompleter GetDoc<CR>
+
+inoremap jk <esc>
 
 if &term =~ '256color'
   " disable Background Color Erase (BCE) so that color schemes
