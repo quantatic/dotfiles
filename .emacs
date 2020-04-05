@@ -2,7 +2,6 @@
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-
 (scroll-bar-mode -1)
 
 (setq display-line-numbers-type 'relative)
@@ -29,5 +28,31 @@
   (package-install 'use-package))
 
 (use-package which-key
-	     :ensure t
-	     :config (which-key-mode))
+  :ensure t
+  :config
+  (which-key-mode))
+
+(use-package company
+  :ensure t
+  :hook ((after-init) . global-company-mode))
+
+(use-package ivy
+  :ensure t
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t))
+
+(use-package counsel
+  :after ivy
+  :ensure t
+  :config
+  (counsel-mode))
+
+(use-package swiper
+  :after ivy
+  :ensure t
+  :bind ("C-s" . swiper))
+
+(use-package ace-jump-mode
+  :ensure t
+  :bind ("C-c SPC" . ace-jump-mode))
