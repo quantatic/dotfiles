@@ -34,7 +34,9 @@
 
 (use-package company
   :ensure t
-  :hook ((after-init) . global-company-mode))
+  :hook ((after-init) . global-company-mode)
+  :config
+  (setq company-idle-delay 0))
 
 (use-package ivy
   :ensure t
@@ -56,3 +58,6 @@
 (use-package ace-jump-mode
   :ensure t
   :bind ("C-c SPC" . ace-jump-mode))
+
+(use-package eglot
+  :ensure t)
