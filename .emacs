@@ -22,8 +22,6 @@
 ;; Put auto-save files in ~/.saves
 (setq auto-save-file-name-transforms '((".*" "~/.saves/" t)))
 
-(ido-mode 1)
-
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives
@@ -63,7 +61,23 @@
 
 (use-package ace-jump-mode
   :ensure t
-  :bind ("C-c SPC" . ace-jump-mode))
+  :bind ("C-c C-SPC" . ace-jump-mode))
 
 (use-package eglot
-  :ensure t)
+  :ensure t
+  :config
+  (add-to-list 'eglot-server-programs
+	       '(java-mode . ("jdtls")))
+  (add-hook 'java-mode-hook #'eglot-ensure))
+
+(use-package projectile
+  :after ivy
+  :ensure t
+  :config
+  (projectile-mode)
+  (setq projectile-completion-system 'ivy)
+  :bind-keymap ("C-c p" . projectile-command-map))
+
+(use-package pdf-tools
+  :ensure t
+  :config (pdf-tools-install))
