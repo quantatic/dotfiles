@@ -13,8 +13,14 @@
 
 (show-paren-mode 1)
 
-(setq backup-directory-alist '(("." . "~/.saves")))
-(setq auto-save-file-name-transforms '(("." "~/.saves" t)))
+;; Put all backup files in ~/.saves
+(setq backup-directory-alist '(("." . "~/.saves/")))
+
+;; Always copy when backing up, instead of moving.
+(setq backup-by-copying t)
+
+;; Put auto-save files in ~/.saves
+(setq auto-save-file-name-transforms '((".*" "~/.saves/" t)))
 
 (ido-mode 1)
 
