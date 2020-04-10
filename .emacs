@@ -18,6 +18,9 @@
 
 (setq ring-bell-function 'ignore)
 
+;; org-mode logs when a task is moved to done.
+(setq org-log-done t)
+
 ;; Put all backup files in ~/.saves
 (setq backup-directory-alist '(("." . "~/.saves/")))
 
@@ -72,8 +75,9 @@
  :ensure t
  :config
  (add-to-list 'eglot-server-programs
-          '(java-mode . (eglot-eclipse-jdt "jdtls")))
- (add-hook 'java-mode-hook #'eglot-ensure))
+          '(java-mode . (eglot-eclipse-jdt "jdtls"))) ;; need a special handler for jdtls
+ (add-hook 'java-mode-hook #'eglot-ensure)
+ (add-hook 'js-mode-hook #'eglot-ensure))
 
 (use-package projectile
  :after ivy
@@ -98,6 +102,9 @@
  :ensure t)
 
 (put 'upcase-region 'disabled nil)
+
+;; M-j to join lines together
+(global-set-key (kbd "M-j") 'join-line)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
