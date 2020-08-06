@@ -90,9 +90,9 @@ Plug 'editorconfig/editorconfig-vim' "by-filetype configs
 
 Plug 'easymotion/vim-easymotion'
 
-Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 install.py --clang-completer --rust-completer --java-completer' }
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_confirm_extra_conf = 0
+" Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 install.py --clang-completer --rust-completer --java-completer' }
+" let g:ycm_autoclose_preview_window_after_completion = 1
+" let g:ycm_confirm_extra_conf = 0
 
 call plug#end()
 
