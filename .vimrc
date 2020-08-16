@@ -37,7 +37,7 @@ augroup run "run currently edited program with <leader> + r
 	autocmd FileType c nnoremap <buffer> <leader>r :w<CR>:!clear;gcc % -std=c99 -Wall -lpthread -lm -O2 -o %:r_vimcompiled;./%:r_vimcompiled;rm %:r_vimcompiled<CR>
 	autocmd FileType cpp nnoremap <buffer> <leader>r :w<CR>:!clear;g++ % -std=c++11 -Wall -lm -o %:r_vimcompiled;./%:r_vimcompiled;rm %:r_vimcompiled<CR>
 	autocmd FileType lisp nnoremap <buffer> <leader>r :w<CR>:!clear;clisp -i %<CR>
-	autocmd FileType javascript nnoremap <buffer> <leader>r :w<CR>:!clear;nodejs %<CR>
+	autocmd FileType javascript nnoremap <buffer> <leader>r :w<CR>:!clear;node %<CR>
 	autocmd FileType asm nnoremap <buffer> <leader>r :w<CR>:!clear;nasm % -f elf64 -o %:r_vimcompiled.bin; ld %:r_vimcompiled.bin -o %:r_vimcompiled; ./%:r_vimcompiled; rm %:r_vimcompiled.bin %:r_vimcompiled<CR>
 	autocmd FileType java nnoremap <buffer> <leader>r :w<CR>:!clear;javac %; java %:r<CR>
 	autocmd FileType sh nnoremap <buffer> <leader>r :w<CR>:!clear;bash %<CR>
